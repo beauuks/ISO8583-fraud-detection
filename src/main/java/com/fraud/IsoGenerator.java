@@ -13,7 +13,7 @@ import org.apache.kafka.clients.producer.*;
 
 public class IsoGenerator {
     private static final List<String> MERCHANTS = List.of(
-            "Starbucks NYC", "McDonalds LA", "InnOut SF", "Uber Ride", "Walmart LV", "Five Guys Madrid"
+            "Starbucks NYC", "McDonalds LA", "InnOut SF", "Uber Ride", "Walmart LV", "Five Guys Madrid", "Apple Store Bangkok"
     );
 
     public static void main(String[] args) throws Exception {
