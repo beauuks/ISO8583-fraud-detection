@@ -13,7 +13,7 @@ import org.apache.kafka.clients.producer.*;
 
 public class IsoGenerator {
     private static final List<String> MERCHANTS = List.of(
-            "Starbucks NYC", "McDonalds LA", "InnOut SF", "Uber Ride", "Walmart LV", "Apple Store Madrid"
+            "Starbucks NYC", "McDonalds LA", "InnOut SF", "Uber Ride", "Walmart LV", "Five Guys Madrid"
     );
 
     public static void main(String[] args) throws Exception {
@@ -32,7 +32,12 @@ public class IsoGenerator {
         while (true) {
             IsoMessage msg = mfact.newMessage(0x200);
 
-            String amount = String.valueOf(random.nextInt(5000) + 10);
+            String amount;
+            if (random.nextInt(100) < 90) {
+                amount = String.valueOf(random.nextInt(6000) + 100); // Normal Behavior
+            } else {
+                amount = String.valueOf(random.nextInt(400000) + 100000); // Suspicious Behavior
+            }
             String merchant = MERCHANTS.get(random.nextInt(MERCHANTS.size()));
 
             double displayAmount = Double.valueOf(amount) / 100.0;
